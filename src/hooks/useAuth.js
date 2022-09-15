@@ -1,5 +1,6 @@
 import { actions } from "../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   selectIsAuthenticatedFromState,
   selectLoggedInUserFromState,
@@ -8,11 +9,10 @@ import {
 
 export const useAuth = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const login = (values) => {
-    console.log(values);
-    dispatch(actions.loginAttempt(values));
-    // console.log(useSelector((state) => selectAccessTokenFromState(state)));
+  const login = ({ values, setSubmitting }) => {
+    dispatch(actions.loginAttempt({ values, navigate, setSubmitting }));
   };
 
   return {

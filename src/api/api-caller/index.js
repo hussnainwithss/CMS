@@ -34,7 +34,7 @@ export function apiCaller({
   })
     .then((res) => res)
     .catch(({ response }) => {
-      console.log(response);
+      console.error(response);
       throw response;
     });
 }

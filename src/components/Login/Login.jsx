@@ -1,28 +1,15 @@
 import React from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+
 import { Card, Col, Row } from "react-bootstrap";
-import { BaseLayout } from "../../layouts";
-import { TextField } from "../../elements/Form";
-import { FilledButton } from "../../elements/Button";
+
+import { LoginForm } from "./Form";
+
 import { useAuth } from "../../hooks/useAuth";
 
+import { BaseLayout } from "../../layouts";
+
 const Login = () => {
-  const { login, user, isAuthenticated, token } = useAuth();
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-
-  const validationSchema = Yup.object({
-    email: Yup.string().email().required(),
-    password: Yup.string().required(),
-  });
-
-  const onSubmit = (values) => {
-    console.log(values);
-    login(values);
-  };
+  const { login } = useAuth();
 
   return (
     <BaseLayout>
@@ -30,7 +17,7 @@ const Login = () => {
         <Col
           lg={8}
           xxl={5}
-          className="py-3 position-relative mb-0 mt-0 mr-0 ml-0"
+          className="py-3 position-relative mb-auto mt-auto ms-auto me-auto"
         >
           <Card className="overflow-hidden z-index-1">
             <Card.Body className="p-0">
@@ -49,39 +36,7 @@ const Login = () => {
                         <h3>تسجيل الدخول</h3>
                       </Col>
                     </Row>
-                    <Formik
-                      initialValues={initialValues}
-                      validationSchema={validationSchema}
-                      onSubmit={onSubmit}
-                    >
-                      <Form>
-                        <div className="mb-3">
-                          <Row className="mb-3">
-                            <TextField
-                              name="email"
-                              type="email"
-                              placeholder="البريد الالكتروني الخاص بكم في اداء"
-                            />
-                          </Row>
-                          <Row>
-                            <TextField
-                              name="password"
-                              type="password"
-                              placeholder="البريد الالكتروني الخاص بكم في اداء"
-                            />
-                          </Row>
-                          <div>
-                            <FilledButton
-                              type="submit"
-                              variant="success"
-                              className="w-100 d-block mt-3"
-                            >
-                              تسجيل الدخول
-                            </FilledButton>
-                          </div>
-                        </div>
-                      </Form>
-                    </Formik>
+                    <LoginForm login={login} />
                   </div>
                 </Col>
               </Row>
