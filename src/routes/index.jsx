@@ -9,7 +9,7 @@ const Router = () => {
         <Suspense fallback={<div>Loading...</div>}>
             <Routes>
                 <Route path={ROUTES.LOGIN} element={<Login />} />
-                <Route path={ROUTES.DASHBOARD} />
+                <Route path={ROUTES.DASHBOARD} element={<div>Dashboard</div>} />
 
             </Routes>
         </Suspense >
