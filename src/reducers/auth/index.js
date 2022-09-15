@@ -29,6 +29,20 @@ export const auth = (state = INITIAL_STATE, action) => {
         isAuthenticated: false,
         error: action.payload.message,
       };
+    case types.AUTH_LOGOUT_SUCCESS: {
+      return {
+        ...state,
+        user: {},
+        error: "",
+        token: {},
+        isGuestUser: true,
+      };
+    }
+    case types.AUTH_LOGOUT_FAIL:
+      return {
+        ...state,
+        error: action.payload.message,
+      };
     default:
       return {
         ...state,

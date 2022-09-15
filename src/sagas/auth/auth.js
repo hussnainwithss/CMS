@@ -1,5 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import * as caseConverter from "change-object-case";
+import storage from "redux-persist/lib/storage";
+
 import { actions } from "../../actions/auth";
 import { loginAPI } from "../../api/auth";
 import { ROUTES } from "../../routes/constants";
@@ -24,7 +26,17 @@ export function* attemptLogin({
       throw Error();
     }
   } catch (error) {
-    yield put(actions.loginFailure({ message: "Auth Failed" }));
+    yield put(actions.loginFailure({ message: "Login Failed" }));
   }
   setSubmitting(false);
+}
+
+export function* attemptLogout({ payload: { navigate } }) {
+  try {
+    yield put(actions.logoutSuccess());
+    storage.removeItem("persist:auth");
+    yield put(navigate(ROUTES.LOGIN));
+  } catch (error) {
+    yield put(actions.logoutFailure({ message: "Logout Failed" }));
+  }
 }
