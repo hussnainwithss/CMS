@@ -5,6 +5,7 @@ import {
   selectIsAuthenticatedFromState,
   selectLoggedInUserFromState,
   selectAccessTokenFromState,
+  selectLoggedInUserRoleFromState,
 } from "../selectors/auth";
 
 export const useAuth = () => {
@@ -14,7 +15,7 @@ export const useAuth = () => {
   const login = ({ values, setSubmitting }) => {
     dispatch(actions.loginAttempt({ values, navigate, setSubmitting }));
   };
-
+  
   return {
     login,
     isAuthenticated: useSelector((state) =>
@@ -22,5 +23,6 @@ export const useAuth = () => {
     ),
     user: useSelector((state) => selectLoggedInUserFromState(state)),
     token: useSelector((state) => selectAccessTokenFromState(state)),
+    role: useSelector((state) => selectLoggedInUserRoleFromState(state))
   };
 };
