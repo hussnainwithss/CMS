@@ -1,0 +1,12 @@
+#container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background: rgb(230, 242, 239);
+}
+
+.dropdown-menu {
+    position: relative !important;
+}

@@ -12,12 +12,11 @@ const LoginFormMarkup = (props) => {
   return (
     <Form>
       <div className="mb-3">
-        <Row className="mb-3 dir-rtl">
+        <Row className="mb-3">
           <TextField
             name="email"
             type="email"
             placeholder="البريد الالكتروني الخاص بكم في اداء"
-            className='dir-rtl'
           />
         </Row>
         <Row>

@@ -8,7 +8,7 @@
   border-color: red;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'DIN';
     font-weight: 100;
     src: url("./assets/fonts/Linotype - DIN Next LT Arabic UltraLight.ttf")
@@ -51,7 +51,7 @@
 
 html, body{
     font-family: 'DIN' !important;
-}
+} */
 
 :root {
   --falcon-blue: #2c7be5;
@@ -1072,3 +1072,4 @@ hr:not([size]) {
   opacity: 1;
   border: 0;
 }
+
