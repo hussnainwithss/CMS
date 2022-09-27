@@ -1,8 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
+import './container.css';
+
 const BaseLayout = ({children}) => (
-    <Container fluid>
+    <Container fluid id='container'>
         {children}
     </Container>
 )
