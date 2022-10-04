@@ -4,7 +4,7 @@ export const BASE_URL =
     : window._env_.API_URL;
 
 export const ENDPOINTS = {
-  LOGIN: `${BASE_URL}/users/token`,
+  LOGIN: `${BASE_URL}/users/login`,
 };
 
 export const REQUEST_TYPES = {

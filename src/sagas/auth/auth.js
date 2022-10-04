@@ -1,5 +1,4 @@
 import { call, put } from "redux-saga/effects";
-import * as caseConverter from "change-object-case";
 import storage from "redux-persist/lib/storage";
 
 import { actions } from "../../actions/auth";
@@ -11,13 +10,12 @@ export function* attemptLogin({
 }) {
   try {
     const resp = yield call(loginAPI, values);
-    const respData = caseConverter.toCamel(JSON.parse(resp.data));
-    if (respData && respData.key) {
+    if (resp.data.isSuccessful) {
       const actionPayload = {
         token: {
-          ...respData,
+          ...resp.data.data,
         },
-        user: respData.user,
+        user: resp.data.data.user,
       };
       delete actionPayload.token.user;
       yield put(actions.loginSuccess(actionPayload));
@@ -35,7 +33,7 @@ export function* attemptLogout({ payload: { navigate } }) {
   try {
     yield put(actions.logoutSuccess());
     storage.removeItem("persist:auth");
-    yield put(navigate(ROUTES.LOGIN));
+    navigate(ROUTES.LOGIN);
   } catch (error) {
     yield put(actions.logoutFailure({ message: "Logout Failed" }));
   }

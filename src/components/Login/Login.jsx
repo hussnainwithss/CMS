@@ -33,7 +33,7 @@ const Login = () => {
                   <div className="p-4 p-md-5 flex-grow-1">
                     <Row className="flex-between-center">
                       <Col auto="true">
-                        <h3>تسجيل الدخول</h3>
+                        <h3>Login</h3>
                       </Col>
                     </Row>
                     <LoginForm login={login} />

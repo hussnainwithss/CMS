@@ -3,7 +3,7 @@ import { ENDPOINTS, REQUEST_TYPES } from "../constants";
 
 export const loginAPI = (data) =>
   apiCaller({
-    method: REQUEST_TYPES.GET,
+    method: REQUEST_TYPES.POST,
     url: ENDPOINTS.LOGIN,
-    params: data,
+    data,
   });

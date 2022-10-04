@@ -12,13 +12,27 @@ const Sidebar = () => {
   const location = useLocation();
   const route = location.pathname;
 
-  const isCategoriesActive = useMemo(() => [ROUTES.NATIONALITIES, ROUTES.LANGUAGES, ROUTES.REGIONS, ROUTES.CITIES, ROUTES.CHANNELS].includes(route), [route]);  
-  const [isCategoriesExpanded, setIsCategoriesExpanded] = useState(isCategoriesActive);
- 
-  const { role : LoggedInUserRole } = useAuth();
-  
+  const isCategoriesActive = useMemo(
+    () =>
+      [
+        ROUTES.NATIONALITIES,
+        ROUTES.LANGUAGES,
+        ROUTES.REGIONS,
+        ROUTES.CITIES,
+        ROUTES.CHANNELS,
+      ].includes(route),
+    [route]
+  );
+  const [isCategoriesExpanded, setIsCategoriesExpanded] =
+    useState(isCategoriesActive);
+
+  const { role: LoggedInUserRole } = useAuth();
+
   return (
-    <Navbar expand="xl" className="navbar-vertical">
+    <Navbar
+      expand="lg"
+      className="navbar-vertical d-none d-lg-block d-xl-block d-xxl-block"
+    >
       <Navbar.Brand className="d-flex align-items-center p-0 m-0 pl-0">
         <Link className="navbar-brand" to={ROUTES.DASHBOARD}>
           <div className="d-flex align-items-center py-3">
@@ -26,24 +40,25 @@ const Sidebar = () => {
           </div>
         </Link>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="sidebar" className="scrollbar">
         <Nav className="me-auto flex-column vh-100" as="ul">
-          <Nav.Item as="li">
-            <Link
-              className={`nav-link  ${
-                ROUTES.DASHBOARD === route ? "active" : ""
-              }`}
-              to={ROUTES.DASHBOARD}
-            >
-              <div className="d-flex align-items-center">
-                <span className="nav-link-icon">
-                  <i className="svg-inline--fa fa-solid fa-chart-pie fa-w-17" />
-                </span>
-                <span className="ps-1 nav-link-text">Dashboard</span>
-              </div>
-            </Link>
-          </Nav.Item>
+          {LoggedInUserRole && (
+            <Nav.Item as="li">
+              <Link
+                className={`nav-link  ${
+                  ROUTES.DASHBOARD === route ? "active" : ""
+                }`}
+                to={ROUTES.DASHBOARD}
+              >
+                <div className="d-flex align-items-center">
+                  <span className="nav-link-icon">
+                    <i className="svg-inline--fa fa-solid fa-chart-pie fa-w-17" />
+                  </span>
+                  <span className="ps-1 nav-link-text">Dashboard</span>
+                </div>
+              </Link>
+            </Nav.Item>
+          )}
           {(LoggedInUserRole === "Administrator" ||
             LoggedInUserRole === "ContentManager") && (
             <>
@@ -66,7 +81,9 @@ const Sidebar = () => {
                     <span className="nav-link-icon">
                       <i className="svg-inline--fa fa-solid fa-building fa-w-17" />
                     </span>
-                    <span className="ps-1 nav-link-text">Government Entities</span>
+                    <span className="ps-1 nav-link-text">
+                      Government Entities
+                    </span>
                   </div>
                 </Link>
               </Nav.Item>
@@ -117,7 +134,9 @@ const Sidebar = () => {
                   onClick={() => setIsCategoriesExpanded(!isCategoriesExpanded)}
                   aria-expanded={isCategoriesExpanded}
                   aria-controls="categories"
-                  className={`${isCategoriesActive ? 'active' : ''} dropdown-indicator`}
+                  className={`${
+                    isCategoriesActive ? "active" : ""
+                  } dropdown-indicator`}
                 >
                   <div className="d-flex align-items-center">
                     <span className="nav-link-icon">
@@ -140,7 +159,9 @@ const Sidebar = () => {
                         to={ROUTES.NATIONALITIES}
                       >
                         <div className="d-flex align-items-center">
-                          <span className="ps-1 nav-link-text">Nationalities</span>
+                          <span className="ps-1 nav-link-text">
+                            Nationalities
+                          </span>
                         </div>
                       </Link>
                     </Nav.Item>
@@ -229,6 +250,27 @@ const Sidebar = () => {
               </Nav.Item>
             </>
           )}
+          <Nav.Item as="li">
+            <div className="row navbar-vertical-label-wrapper">
+              <div className="col-auto navbar-vertical-label"></div>
+              <div className="col ps-0">
+                <hr className="mb-0 navbar-vertical-divider" />
+              </div>
+            </div>
+            <Link
+              className={`nav-link ${
+                ROUTES.LOGOUT === route ? "active" : ""
+              }`}
+              to={ROUTES.LOGOUT}
+            >
+              <div className="d-flex align-items-center">
+                <span className="nav-link-icon">
+                  <i className=" fa-solid fa-right-from-bracket fa-w-17" />
+                </span>
+                <span className="ps-1 nav-link-text">Logout</span>
+              </div>
+            </Link>
+          </Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

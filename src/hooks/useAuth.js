@@ -15,14 +15,20 @@ export const useAuth = () => {
   const login = ({ values, setSubmitting }) => {
     dispatch(actions.loginAttempt({ values, navigate, setSubmitting }));
   };
-  
+
+  const logout = () => {
+    dispatch(actions.logoutAttempt({ navigate }));
+  };
+
   return {
     login,
+    logout,
     isAuthenticated: useSelector((state) =>
       selectIsAuthenticatedFromState(state)
     ),
     user: useSelector((state) => selectLoggedInUserFromState(state)),
     token: useSelector((state) => selectAccessTokenFromState(state)),
-    role: useSelector((state) => selectLoggedInUserRoleFromState(state))
+    role: useSelector((state) => selectLoggedInUserRoleFromState(state)) 
+    
   };
 };

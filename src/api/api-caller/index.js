@@ -16,7 +16,6 @@ export function apiCaller({
     url,
     params,
     paramsSerializer: (queryParams) => queryString.stringify(queryParams),
-    transformResponse: [(respData) => caseConverter.toCamel(respData)],
     data,
     transformRequest: [
       (reqData) =>

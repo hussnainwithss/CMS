@@ -35,7 +35,7 @@ export const auth = (state = INITIAL_STATE, action) => {
         user: {},
         error: "",
         token: {},
-        isGuestUser: true,
+        isAuthenticated: false,
       };
     }
     case types.AUTH_LOGOUT_FAIL:

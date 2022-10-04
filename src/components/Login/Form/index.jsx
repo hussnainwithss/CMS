@@ -16,14 +16,14 @@ const LoginFormMarkup = (props) => {
           <TextField
             name="email"
             type="email"
-            placeholder="البريد الالكتروني الخاص بكم في اداء"
+            placeholder="Enter E-mail Address"
           />
         </Row>
         <Row>
           <TextField
             name="password"
             type="password"
-            placeholder="البريد الالكتروني الخاص بكم في اداء"
+            placeholder="Enter Password"
           />
         </Row>
         <div>
@@ -33,7 +33,7 @@ const LoginFormMarkup = (props) => {
             className="w-100 d-block mt-3"
             disabled={!isValid || isSubmitting}
           >
-            {isSubmitting ? "تسجيل الدخول..." : "تسجيل الدخول"}
+            {isSubmitting ? "Attempting Login..." : "Login"}
           </FilledButton>
         </div>
       </div>
