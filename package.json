@@ -1,51 +1,68 @@
 {
-  "name": "cms-new",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@tanstack/react-table": "^8.5.15",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "axios": "^0.27.2",
-    "bootstrap": "^5.2.1",
-    "change-object-case": "^0.2.1",
-    "formik": "^2.2.9",
-    "moment": "^2.29.4",
-    "query-string": "^7.1.1",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "6",
-    "react-scripts": "5.0.1",
-    "redux-persist": "^6.0.0",
-    "redux-saga": "^1.2.1",
-    "web-vitals": "^2.1.0",
-    "yup": "^0.32.11"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "cms-new",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@tanstack/react-table": "^8.5.15",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^13.2.1",
+        "axios": "^0.27.2",
+        "bootstrap": "^5.2.1",
+        "change-object-case": "^0.2.1",
+        "formik": "^2.2.9",
+        "moment": "^2.29.4",
+        "query-string": "^7.1.1",
+        "react": "^18.2.0",
+        "react-bootstrap": "^2.5.0",
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.0.2",
+        "react-router-dom": "6",
+        "react-scripts": "5.0.1",
+        "redux-persist": "^6.0.0",
+        "redux-saga": "^1.2.1",
+        "web-vitals": "^2.1.0",
+        "yup": "^0.32.11"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "prettier": "^2.7.1"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,json}": [
+            "eslint . --fix",
+            "prettier --write ."
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
 }
