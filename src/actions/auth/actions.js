@@ -1,5 +1,5 @@
-import * as types from "./types";
-import { payloadActionCreator, emptyActionCreator } from "../../utils/actions";
+import * as types from './types';
+import { payloadActionCreator, emptyActionCreator } from '../../utils/actions';
 
 export const loginAttempt = payloadActionCreator(types.AUTH_LOGIN_ATTEMPT);
 export const loginSuccess = payloadActionCreator(types.AUTH_LOGIN_SUCCESS);

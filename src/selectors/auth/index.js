@@ -1,17 +1,16 @@
 export const selectAuthFromState = (state) => state.auth;
 
 export const selectLoggedInUserFromState = (state) =>
-  selectAuthFromState(state).user;
+    selectAuthFromState(state).user;
 
 export const selectIsAuthenticatedFromState = (state) =>
-  selectAuthFromState(state).isAuthenticated;
+    selectAuthFromState(state).isAuthenticated;
 
 export const selectLoggedInUserRoleFromState = (state) =>
-  selectAuthFromState(state).user.role;
+    selectAuthFromState(state).user.role;
 
 export const selectAccessTokenFromState = (state) =>
-  selectAuthFromState(state).token.key;
+    selectAuthFromState(state).token.key;
 
 export const selectTokenExpiredDateFromState = (state) =>
-  selectAuthFromState(state).token.expiredDate;
-
+    selectAuthFromState(state).token.expiredDate;

@@ -1,4 +1,4 @@
-export * from "./actions";
+export * from './actions';
 
 export const objectMap = (obj, fn) =>
-  Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]);
+    Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)]);

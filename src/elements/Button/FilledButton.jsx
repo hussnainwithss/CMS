@@ -5,7 +5,7 @@ import './FilledButton';
 
 const FilledButton = ({ children, ...rest }) => {
     return (
-        <Button variant='dark' {...rest}>
+        <Button variant="dark" {...rest}>
             {children}
         </Button>
     );

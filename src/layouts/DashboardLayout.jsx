@@ -1,18 +1,18 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import { Sidebar } from "../components/Sidebar";
-import { Navbar } from "../components/Navbar";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { Sidebar } from '../components/Sidebar';
+import { Navbar } from '../components/Navbar';
 
-import "./container.css";
+import './container.css';
 
 const DashboardLayout = ({ children }) => (
-  <Container fluid className="vh-100" id="container">
-    <Sidebar />
-    <div className="content">
-      <Navbar />
-      {children}
-    </div>
-  </Container>
+    <Container fluid className="vh-100" id="container">
+        <Sidebar />
+        <div className="content">
+            <Navbar />
+            {children}
+        </div>
+    </Container>
 );
 
 export default DashboardLayout;

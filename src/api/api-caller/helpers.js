@@ -3,7 +3,8 @@
 // import { tokenRefreshSuccess, logoutAttempt } from "../../actions/auth/actions";
 import moment from 'moment';
 
-export const isTokenExpiredError = (status, TokenExpireTimeStamp) => status === 401 && moment().isAfter(moment(TokenExpireTimeStamp));
+export const isTokenExpiredError = (status, TokenExpireTimeStamp) =>
+    status === 401 && moment().isAfter(moment(TokenExpireTimeStamp));
 
 // export const resetTokenAndReattemptRequest = (
 //   originalRequest,

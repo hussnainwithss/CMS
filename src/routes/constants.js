@@ -12,4 +12,4 @@ export const ROUTES = {
     CHANNELS: '/admin/categories/channels',
     SETTINGS: '/admin/settings',
     USERS: '/admin/users',
-}
+};
