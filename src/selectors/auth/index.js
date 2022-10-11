@@ -10,7 +10,8 @@ export const selectLoggedInUserRoleFromState = (state) =>
   selectAuthFromState(state).user.role;
 
 export const selectAccessTokenFromState = (state) =>
-  selectAuthFromState(state).token.accessToken;
+  selectAuthFromState(state).token.key;
 
 export const selectTokenExpiredDateFromState = (state) =>
   selectAuthFromState(state).token.expiredDate;
+

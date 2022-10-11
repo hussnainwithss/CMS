@@ -29,7 +29,7 @@ const LoginFormMarkup = (props) => {
         <div>
           <FilledButton
             type="submit"
-            variant="success"
+            variant="primary"
             className="w-100 d-block mt-3"
             disabled={!isValid || isSubmitting}
           >

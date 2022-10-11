@@ -1,0 +1,33 @@
+.search-box {
+    position: relative;
+    width: 21rem;
+    font-size: 0.8333333333rem;
+  }
+  .search-box .search-box-icon {
+    position: absolute;
+    color: var(--falcon-400);
+    top: 50%;
+    left: 0.9rem;
+    -webkit-transform: translateY(-48%);
+    -ms-transform: translateY(-48%);
+    transform: translateY(-48%);
+  }
+  .search-box .search-input {
+    padding-left: 2rem;
+    line-height: 1.7;
+  }
+  /* .search-box .search-input::-webkit-search-cancel-button {
+    display: none;
+  } */
+  .search-box [data-bs-toggle="search"]:not(.show) + [data-bs-dismiss="search"] {
+    display: none;
+  }
+  .search-box .file-thumbnail {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .safari .search-box .search-input {
+    line-height: 2;
+  }
+  

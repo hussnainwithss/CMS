@@ -8,7 +8,10 @@ import "./container.css";
 const DashboardLayout = ({ children }) => (
   <Container fluid className="vh-100" id="container">
     <Sidebar />
-    <div className="content">{children}</div>
+    <div className="content">
+      <Navbar />
+      {children}
+    </div>
   </Container>
 );
 

@@ -5,6 +5,7 @@ export const BASE_URL =
 
 export const ENDPOINTS = {
   LOGIN: `${BASE_URL}/users/login`,
+  USERS: `${BASE_URL}/users`,
 };
 
 export const REQUEST_TYPES = {

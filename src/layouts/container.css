@@ -1,12 +1,45 @@
 #container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    background: rgb(230, 242, 239);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100%; */
+  background: rgb(230, 242, 239);
+  min-height: 100%;
+  height: auto !important; /* cross-browser */
+  height: 100%; /* cross-browser */
 }
 
 .dropdown-menu {
-    position: relative !important;
+  position: relative !important;
+}
+
+.content {
+  padding-top: 20px;
+  width: 77%;
+}
+
+@media (max-width: 576px) {
+  .content {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    width: 98%;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    margin-left: 15rem;
+    width: 77%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .content {
+    width: 83%;
+  }
 }

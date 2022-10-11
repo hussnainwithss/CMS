@@ -24,17 +24,17 @@ export function* attemptLogin({
       throw Error();
     }
   } catch (error) {
-    yield put(actions.loginFailure({ message: "Login Failed" }));
+    yield put(actions.loginFailed({ message: "Login Failed" }));
   }
   setSubmitting(false);
 }
 
-export function* attemptLogout({ payload: { navigate } }) {
+export function* attemptLogout() {
   try {
     yield put(actions.logoutSuccess());
     storage.removeItem("persist:auth");
-    navigate(ROUTES.LOGIN);
+    // navigate(ROUTES.LOGIN);
   } catch (error) {
-    yield put(actions.logoutFailure({ message: "Logout Failed" }));
+    yield put(actions.logoutFailed({ message: "Logout Failed" }));
   }
 }

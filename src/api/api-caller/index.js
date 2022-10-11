@@ -1,6 +1,11 @@
 import Axios from "axios";
 import * as queryString from "query-string";
 import * as caseConverter from "change-object-case";
+import { isTokenExpiredError } from "./helpers";
+
+import { store } from "../../App";
+import { logoutAttempt } from "../../actions/auth/actions";
+import { selectTokenExpiredDateFromState } from "../../selectors/auth";
 
 export function apiCaller({
   method = "GET",
@@ -25,7 +30,7 @@ export function apiCaller({
       // this check will not stringfigy already stringify object
     ],
     headers: {
-      Authorization: `Bearer ${token || ""}`,
+      Authorization: `${token || ""}`,
       "Content-Type": "application/json",
     },
     responseType: "json",
@@ -33,33 +38,27 @@ export function apiCaller({
   })
     .then((res) => res)
     .catch(({ response }) => {
-      console.error(response);
-      throw response;
+      if (response){
+        throw response;
+      }
+      throw Error("Unauthorized");
+      
     });
 }
 
-// Axios.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     const {
-//       config,
-//       response: { status, data },
-//     } = error;
-//     // this will check for token expired specific case in all api's error response
-//     if (isTokenExpiredError(status, data)) {
-//       store.dispatch(logoutAttempt());
-//       const originalRequest = config;
-//       const storeState = store.getState();
-//       const refreshToken = selectRefreshTokenFromState(storeState);
-//       const { email } = selectLoggedInUserFromState(storeState);
-//       const authType = selectAuthTypeFromState(storeState);
-//       // retry to fetch new accesstoken by making an refreshToken api call
-//       return resetTokenAndReattemptRequest(
-//         originalRequest,
-//         { refreshToken, email },
-//         authType
-//       );
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+Axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const {
+      response: { status },
+    } = error;
+    const originalState = store.getState();
+    const TokenExpireTimeStamp = selectTokenExpiredDateFromState(originalState);
+    // this will check for token expired specific case in all api's error response
+    if (isTokenExpiredError(status, TokenExpireTimeStamp)) {
+      store.dispatch(logoutAttempt());
+      return Promise.resolve("Logged out");
+    }
+    return Promise.reject(error);
+  }
+);

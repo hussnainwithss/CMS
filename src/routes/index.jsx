@@ -1,7 +1,9 @@
 import React, { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { ROUTES } from "./constants";
 import { DashboardLayout } from "../layouts";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const Login = lazy(() => import("../components/Login/Login"));
 const Logout = lazy(() => import("../pages/Auth/Logout/Logout"));
@@ -10,6 +12,14 @@ const UserManagement = lazy(() =>
 );
 
 const Router = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect( () => {
+    if(!isAuthenticated) {
+        navigate(ROUTES.LOGIN);
+    }
+  }, [navigate, isAuthenticated])
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>

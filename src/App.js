@@ -4,9 +4,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { configureStore } from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/css/bootstrap.rtl.min.css";
+// import "bootstrap/dist/css/bootstrap.rtl.min.css";
 
 // import "bootstrap/dist/js/bootstrap.bundle";
+import './index.css';
 
 
 import Router from "./routes";
