@@ -52,12 +52,19 @@
     "devDependencies": {
         "husky": "^8.0.1",
         "lint-staged": "^13.0.3",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "stylelint": "^14.13.0",
+        "stylelint-config-standard": "^28.0.0"
     },
     "lint-staged": {
         "**/*.{js,jsx,json}": [
             "eslint . --fix",
-            "prettier --write ."
+            "prettier --write .",
+            "git add"
+        ],
+        "**/*.css": [
+            "stylelint --fix",
+            "git add"
         ]
     },
     "husky": {
