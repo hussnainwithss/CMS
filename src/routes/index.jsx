@@ -4,6 +4,7 @@ import { ROUTES } from './constants';
 import { DashboardLayout } from '../layouts';
 import { useAuth } from '../hooks/useAuth';
 import { useEffect } from 'react';
+import { Loader } from '../components/Loader';
 
 const Login = lazy(() => import('../components/Login/Login'));
 const Logout = lazy(() => import('../pages/Auth/Logout/Logout'));
@@ -21,7 +22,7 @@ const Router = () => {
         }
     }, [navigate, isAuthenticated]);
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
             <Routes>
                 <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route path={ROUTES.LOGOUT} element={<Logout />} />

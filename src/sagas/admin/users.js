@@ -9,15 +9,16 @@ import {
     getUsersApi,
 } from '../../api/admin/users';
 
-export function* getUsers() {
+export function* getUsers({ payload: { setIsLoading } }) {
     const token = yield select(selectAccessTokenFromState);
     try {
         const resp = yield call(getUsersApi, token);
         if (resp) {
             yield put(actions.getUsersSuccess(resp.data.data));
+            setIsLoading(false);
         }
     } catch (error) {
-        yield put(actions.getUsersFailed(error));
+        yield put(actions.getUsersFailed(error.data.enMessage));
     }
 }
 
@@ -35,9 +36,9 @@ export function* addUser({
     } catch (error) {
         console.log(error);
         const errorMsg =
-            error.data.message === 'Already Exsist'
-                ? `User ${error.data.message}s`
-                : error.data.message;
+            error.data.enMessage === 'Already Exsist'
+                ? `User ${error.data.enMessage}s`
+                : error.data.enMessage;
         setStatus({ type: 'danger', message: errorMsg });
         yield put(actions.addUserFailed(error.data));
     }
@@ -57,11 +58,11 @@ export function* editUser({
         }
     } catch (error) {
         const errorMsg =
-            error.data.message === 'Already Exsist'
-                ? `User ${error.data.message}s`
-                : error.data.message;
+            error.data.enMessage === 'Already Exsist'
+                ? `User ${error.data.enMessage}s`
+                : error.data.enMessage;
         setStatus({ type: 'danger', message: errorMsg });
-        yield put(actions.editUserFailed(error.message));
+        yield put(actions.editUserFailed(errorMsg));
     }
     setSubmitting(false);
 }

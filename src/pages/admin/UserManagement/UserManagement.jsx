@@ -7,6 +7,7 @@ import { ACTION_TYPE } from './constants';
 import { actions } from '../../../actions/admin';
 
 import TitleCard from '../../../components/TitleCard/TitleCard';
+import { Loader } from '../../../components/Loader';
 import { DashboardLayout } from '../../../layouts';
 import { selectUsersFromState } from '../../../selectors/admin/users';
 import { getColumns, TableActions } from './TableData';
@@ -14,13 +15,14 @@ import { DataTable } from '../../../components/DataTable';
 import { Modal } from '../../../components/ModalContainer';
 
 const UserManagement = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [show, setShow] = useState(false);
     const [showDeletePopUp, setShowDeletePopUp] = useState(false);
     const [isAddOrEdit, setIsAddOrEdit] = useState(ACTION_TYPE.ADD);
-
     const [user, setUser] = useState({});
 
     const dispatch = useDispatch();
+
     const userData = useSelector(selectUsersFromState);
 
     const handleOpen = (isAddOrEdit) => {
@@ -31,10 +33,6 @@ const UserManagement = () => {
     const showDeletePopup = () => {
         setShowDeletePopUp(true);
     };
-
-    useEffect(() => {
-        dispatch(actions.getUsersAttempt());
-    }, [dispatch]);
 
     const handleDelete = () => {
         dispatch(actions.DeleteUserAttempt({ user, setShowDeletePopUp }));
@@ -54,7 +52,14 @@ const UserManagement = () => {
         }
     };
 
-    return (
+    useEffect(() => {
+        setIsLoading(true);
+        dispatch(actions.getUsersAttempt({ setIsLoading }));
+    }, [dispatch, setIsLoading]);
+
+    return isLoading ? (
+        <Loader />
+    ) : (
         <DashboardLayout>
             <TitleCard
                 title="User Management"
