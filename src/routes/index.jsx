@@ -11,6 +11,9 @@ const Logout = lazy(() => import('../pages/Auth/Logout/Logout'));
 const UserManagement = lazy(() =>
     import('../pages/admin/UserManagement/UserManagement'),
 );
+const Channels = lazy(() =>
+    import('../pages/admin/Categories/Channels/Channels'),
+);
 
 const Router = () => {
     const { isAuthenticated } = useAuth();
@@ -60,10 +63,7 @@ const Router = () => {
                     path={ROUTES.CITIES}
                     element={<DashboardLayout>CITIES</DashboardLayout>}
                 />
-                <Route
-                    path={ROUTES.CHANNELS}
-                    element={<DashboardLayout>CHANNELS</DashboardLayout>}
-                />
+                <Route path={ROUTES.CHANNELS} element={<Channels />} />
                 <Route
                     path={ROUTES.SETTINGS}
                     element={<DashboardLayout>SETTINGS</DashboardLayout>}

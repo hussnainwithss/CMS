@@ -34,7 +34,6 @@ export function* addUser({
             afterSubmit();
         }
     } catch (error) {
-        console.log(error);
         const errorMsg =
             error.data.enMessage === 'Already Exsist'
                 ? `User ${error.data.enMessage}s`

@@ -6,6 +6,7 @@ export const BASE_URL =
 export const ENDPOINTS = {
     LOGIN: `${BASE_URL}/users/login`,
     USERS: `${BASE_URL}/users`,
+    CHANNELS: `${BASE_URL}/channelscategories`,
 };
 
 export const REQUEST_TYPES = {

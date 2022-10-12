@@ -1,4 +1,4 @@
-export const selectAdminFromState = (state) => state.admin;
+const selectAdminFromState = (state) => state.admin;
 
 export const selectUsersFromState = (state) =>
-    selectAdminFromState(state).users;
+    selectAdminFromState(state).users.users;
