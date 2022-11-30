@@ -1,0 +1,45 @@
+/* 
+.form-switch .form-check-input {
+  cursor: pointer;
+}
+.form-switch .form-check-input:checked {
+  background-color: #009969;
+  cursor: pointer;
+  border-color: #009969;
+}
+
+.form-switch .form-check-input:focus {
+  box-shadow:  none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e");
+  border-color:  rgba(0,0,0,.25);
+}
+
+.form-switch .form-check-input:hover {
+  background-color: #009969;
+  cursor: pointer;
+  border-color: #009969;
+  box-shadow:  0 0 0.7rem rgb(0 153 105 /75%);
+}
+ */
+
+.color-red {
+    color: red;
+}
+
+.color-red:hover {
+    cursor: pointer;
+    color: rgb(218, 70, 70);
+}
+
+.color-grey {
+    color: #344050;
+}
+
+.color-grey:hover {
+    cursor: pointer;
+    color: #009969;
+}
+
+.table {
+    --bs-table-striped-bg: #f2fafa !important;
+}

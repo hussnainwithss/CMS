@@ -7,6 +7,15 @@ export const ENDPOINTS = {
     LOGIN: `${BASE_URL}/users/login`,
     USERS: `${BASE_URL}/users`,
     CHANNELS: `${BASE_URL}/channelscategories`,
+    CITIES: `${BASE_URL}/cities`,
+    REGIONS: `${BASE_URL}/regions`,
+    LANGUAGES: `${BASE_URL}/languages`,
+    NATIONALITIES: `${BASE_URL}/nationalities`,
+    ENTITYTYPE: `${BASE_URL}/entitytype`, 
+    QUESTIONCATEGORY: `${BASE_URL}/questioncategory`,
+    CHANNELTYPES: `${BASE_URL}/channelType`,
+    SECTORS: `${BASE_URL}/sectors`,
+    ENTITIES: `${BASE_URL}/entities`,
 };
 
 export const REQUEST_TYPES = {

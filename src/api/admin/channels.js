@@ -27,7 +27,7 @@ export const EditChannelApi = (token, data) =>
 export const DeleteChannelApi = (token, data) =>
     apiCaller({
         method: REQUEST_TYPES.DELETE,
-        url: ENDPOINTS.CHANNELS,
+        url: `${ENDPOINTS.CHANNELS}/${data.id}`,
         token,
         data,
     });

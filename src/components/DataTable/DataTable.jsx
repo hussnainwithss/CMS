@@ -5,13 +5,22 @@ import {
     getCoreRowModel,
     useReactTable,
     getFilteredRowModel,
+    getPaginationRowModel,
 } from '@tanstack/react-table';
 
 import { DebouncedInput } from '../../elements/Form';
 
 import './datatable.css';
+import { Pager } from './Pager';
 
-const DataTable = ({ data, columns, dataType, actions, handler }) => {
+const DataTable = ({
+    data,
+    columns,
+    dataType,
+    actions,
+    handler,
+    isPaginated = false,
+}) => {
     const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({
@@ -23,6 +32,9 @@ const DataTable = ({ data, columns, dataType, actions, handler }) => {
         },
         globalFilterFn: 'includesString',
         getFilteredRowModel: getFilteredRowModel(),
+        getPaginationRowModel: isPaginated
+            ? getPaginationRowModel()
+            : undefined,
         debugTable: true,
         debugHeaders: true,
         debugColumns: false,
@@ -30,12 +42,29 @@ const DataTable = ({ data, columns, dataType, actions, handler }) => {
 
     return (
         <Card className="mb-3">
-            <Card.Footer className="bg-light">
+            <Card.Footer
+                className={`bg-light ${
+                    isPaginated && 'd-flex justify-content-between flex-wrap'
+                }`}
+            >
                 <DebouncedInput
                     value={globalFilter ?? ''}
                     onChange={(value) => setGlobalFilter(String(value))}
                     placeholder={`Search ${dataType}`}
+                    isPaginated={isPaginated}
                 />
+
+                {isPaginated && (
+                    <Pager
+                        currentPage={table.getState().pagination.pageIndex}
+                        setCurrentPage={table.setPageIndex}
+                        totalPages={table.getPageCount()}
+                        getCanNextPage={table.getCanNextPage}
+                        getCanPrevPage={table.getCanPreviousPage}
+                        pageSize={table.getState().pagination.pageSize}
+                        setPageSize={table.setPageSize}
+                    />
+                )}
             </Card.Footer>
             <Card.Body>
                 <Table striped hover responsive>
@@ -103,6 +132,13 @@ const DataTable = ({ data, columns, dataType, actions, handler }) => {
                     )}
                 </Table>
             </Card.Body>
+            <Card.Footer
+                className={`bg-light ${
+                    isPaginated && 'd-flex justify-content-between flex-wrap'
+                }`}
+            >
+            Showing {table.getRowModel().rows.length} of {table.getPrePaginationRowModel().rows.length}
+            </Card.Footer>
         </Card>
     );
 };

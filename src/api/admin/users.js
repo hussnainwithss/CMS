@@ -28,7 +28,7 @@ export const EditUserApi = (token, data) =>
 export const DeleteUserApi = (token, data) =>
     apiCaller({
         method: REQUEST_TYPES.DELETE,
-        url: ENDPOINTS.USERS,
+        url: `${ENDPOINTS.USERS}/${data.id}`,
         token,
         data,
     });

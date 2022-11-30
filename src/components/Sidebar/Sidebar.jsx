@@ -2,11 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar, Nav, Collapse } from 'react-bootstrap';
 import { ROUTES } from '../../routes/constants';
+import { useAuth } from '../../hooks/useAuth';
 
 import wataniLogo from '../../assets/img/watani_logo_arabic_desktop.png';
 
 import './sidebar.css';
-import { useAuth } from '../../hooks/useAuth';
 
 const Sidebar = () => {
     const location = useLocation();
@@ -19,7 +19,10 @@ const Sidebar = () => {
                 ROUTES.LANGUAGES,
                 ROUTES.REGIONS,
                 ROUTES.CITIES,
-                ROUTES.CHANNELS,
+                ROUTES.CHANNELCATEGORIES,
+                ROUTES.ENTITYTYPES,
+                ROUTES.QUESTIONCATEGORY,
+                ROUTES.CHANNELTYPES,
             ].includes(route),
         [route],
     );
@@ -31,7 +34,7 @@ const Sidebar = () => {
     return (
         <Navbar
             expand="lg"
-            className="navbar-vertical d-none d-lg-block d-xl-block d-xxl-block"
+            className="navbar-vertical d-none d-lg-block d-xl-block d-xxl-block "
         >
             <Navbar.Brand className="d-flex align-items-center p-0 m-0 pl-0">
                 <Link className="navbar-brand" to={ROUTES.DASHBOARD}>
@@ -45,8 +48,8 @@ const Sidebar = () => {
                     </div>
                 </Link>
             </Navbar.Brand>
-            <Navbar.Collapse id="sidebar" className="scrollbar">
-                <Nav className="me-auto flex-column vh-100" as="ul">
+            <Navbar.Collapse id="sidebar" className="scrollbar ">
+                <Nav className={`me-auto flex-column vh-100 `} as="ul">
                     {LoggedInUserRole && (
                         <Nav.Item as="li">
                             <Link
@@ -80,9 +83,28 @@ const Sidebar = () => {
                                 </div>
                                 <Link
                                     className={`nav-link  ${
-                                        ROUTES.GOVENTS === route ? 'active' : ''
+                                        route.includes(ROUTES.SECTORS)
+                                            ? 'active'
+                                            : ''
                                     }`}
-                                    to={ROUTES.GOVENTS}
+                                    to={ROUTES.SECTORS}
+                                >
+                                    <div className="d-flex align-items-center">
+                                        <span className="nav-link-icon">
+                                            <i className="svg-inline--fa fa-solid fa-vector-square fa-w-17" />
+                                        </span>
+                                        <span className="ps-1 nav-link-text">
+                                            Sectors
+                                        </span>
+                                    </div>
+                                </Link>
+                            </Nav.Item>
+                            <Nav.Item as="li">
+                            <Link
+                                    className={`nav-link  ${
+                                        ROUTES.ENTITIES === route ? 'active' : ''
+                                    }`}
+                                    to={ROUTES.ENTITIES}
                                 >
                                     <div className="d-flex align-items-center">
                                         <span className="nav-link-icon">
@@ -90,6 +112,25 @@ const Sidebar = () => {
                                         </span>
                                         <span className="ps-1 nav-link-text">
                                             Government Entities
+                                        </span>
+                                    </div>
+                                </Link>
+                            </Nav.Item>
+                            <Nav.Item as="li">
+                                <Link
+                                    className={`nav-link  ${
+                                        route.includes(ROUTES.SERVICES)
+                                            ? 'active'
+                                            : ''
+                                    }`}
+                                    to={ROUTES.SERVICES}
+                                >
+                                    <div className="d-flex align-items-center">
+                                        <span className="nav-link-icon">
+                                            <i className="svg-inline--fa fa-solid fa-tablet-screen-button fa-w-17" />
+                                        </span>
+                                        <span className="ps-1 nav-link-text">
+                                            Services
                                         </span>
                                     </div>
                                 </Link>
@@ -240,15 +281,66 @@ const Sidebar = () => {
                                         <Nav.Item as="li">
                                             <Link
                                                 className={`nav-link ${
-                                                    ROUTES.CHANNELS === route
+                                                    ROUTES.CHANNELCATEGORIES ===
+                                                    route
                                                         ? 'active'
                                                         : ''
                                                 }`}
-                                                to={ROUTES.CHANNELS}
+                                                to={ROUTES.CHANNELCATEGORIES}
                                             >
                                                 <div className="d-flex align-items-center">
                                                     <span className="ps-1 nav-link-text">
-                                                        Rating Channels
+                                                        Channel Categories
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </Nav.Item>
+                                        <Nav.Item as="li">
+                                            <Link
+                                                className={`nav-link ${
+                                                    ROUTES.CHANNELTYPES ===
+                                                    route
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                to={ROUTES.CHANNELTYPES}
+                                            >
+                                                <div className="d-flex align-items-center">
+                                                    <span className="ps-1 nav-link-text">
+                                                        Channel Types
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </Nav.Item>
+                                        <Nav.Item as="li">
+                                            <Link
+                                                className={`nav-link ${
+                                                    ROUTES.ENTITYTYPES === route
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                to={ROUTES.ENTITYTYPES}
+                                            >
+                                                <div className="d-flex alirogn-items-center">
+                                                    <span className="ps-1 nav-link-text">
+                                                        Entity Types
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </Nav.Item>
+                                        <Nav.Item as="li">
+                                            <Link
+                                                className={`nav-link ${
+                                                    ROUTES.QUESTIONCATEGORY ===
+                                                    route
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                to={ROUTES.QUESTIONCATEGORY}
+                                            >
+                                                <div className="d-flex alirogn-items-center">
+                                                    <span className="ps-1 nav-link-text">
+                                                        Question Category
                                                     </span>
                                                 </div>
                                             </Link>

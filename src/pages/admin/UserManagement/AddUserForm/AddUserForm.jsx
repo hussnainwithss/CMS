@@ -13,6 +13,8 @@ import { USERROLES } from '../../../../constants';
 import { objectMap } from '../../../../utils';
 import { ACTION_TYPE } from '../constants';
 
+import commonStyles from '../../../../styles/common.module.css'; 
+
 export const UserForm = ({
     isAddOrEdit,
     user = {},
@@ -77,6 +79,7 @@ export const UserForm = ({
                             bottomText="Username as it will appear in the reports later"
                         />
                     </div>
+                    <hr className={commonStyles['line-grey']}/>
                     <div className="mb-3">
                         <SelectField
                             name="role"
@@ -91,7 +94,8 @@ export const UserForm = ({
                             ))}
                         </SelectField>
                     </div>
-                    <div className="mb-3">
+                    <hr className={commonStyles['line-grey']}/>
+                    <div className="mb-5">
                         <SwitchField
                             type="switch"
                             id="isActive"

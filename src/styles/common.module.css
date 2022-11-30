@@ -1,0 +1,8 @@
+.line-grey {
+    height: 1px !important;
+    margin: 1rem 0;
+    color: #d8e2ef;
+    background-color: currentcolor;
+    opacity: 1;
+    border: 0;
+}

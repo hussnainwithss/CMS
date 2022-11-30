@@ -68,13 +68,14 @@ const UserManagement = () => {
                 buttonId="add"
                 buttonOnClick={clickHandler}
             />
-            {userData.length > 0 && (
+            {userData && (
                 <DataTable
                     columns={getColumns()}
                     data={userData}
                     dataType="Users"
                     actions={TableActions}
                     handler={clickHandler}
+                    isPaginated
                 />
             )}
             <Modal

@@ -10,13 +10,25 @@ const ModalContainer = ({
     onCancel,
     primaryButtonText,
     secondaryButtonText,
+    onHide,
+    backdropClassName,
+    dialogClassName,
     size = 'lg',
+    saveButtonType='success'
 }) => {
     const handleClose = () => setShow(false);
 
     return (
-        <Modal show={show} onHide={handleClose} centered size={size}>
-            <Modal.Header className="bg-light py-3 ps-4 pe-6" closeButton>
+        <Modal
+            show={show}
+            onHide={onHide || handleClose}
+            centered
+            size={size}
+            backdropClassName={backdropClassName}
+            className={dialogClassName}
+            
+        >
+            <Modal.Header className={`bg-light py-3 ps-4 pe-6 `} closeButton>
                 <Modal.Title>{header}</Modal.Title>
             </Modal.Header>
             <Modal.Body className="p-4">{children}</Modal.Body>
@@ -24,7 +36,7 @@ const ModalContainer = ({
                 <Modal.Footer>
                     {onSave && (
                         <Button
-                            variant="primary"
+                            variant={saveButtonType}
                             onClick={onSave}
                             type="submit"
                         >

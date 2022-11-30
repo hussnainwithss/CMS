@@ -6,6 +6,7 @@ import {
     selectLoggedInUserFromState,
     selectAccessTokenFromState,
     selectLoggedInUserRoleFromState,
+    selectTokenExpiredDateFromState,
 } from '../selectors/auth';
 
 export const useAuth = () => {
@@ -29,5 +30,6 @@ export const useAuth = () => {
         user: useSelector((state) => selectLoggedInUserFromState(state)),
         token: useSelector((state) => selectAccessTokenFromState(state)),
         role: useSelector((state) => selectLoggedInUserRoleFromState(state)),
+        tokenExpireTimeStamp: useSelector((state) => selectTokenExpiredDateFromState(state)),
     };
 };

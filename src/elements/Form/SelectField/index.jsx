@@ -2,7 +2,7 @@ import React from 'react';
 import { useField } from 'formik';
 import { Form } from 'react-bootstrap';
 
-const SelectField = ({ label, bottomText, ...props }) => {
+const SelectField = ({ label, bottomText, onChangeFunc, ...props }) => {
     const [field, meta] = useField(props);
     return (
         <Form.Group
@@ -13,6 +13,7 @@ const SelectField = ({ label, bottomText, ...props }) => {
             <Form.Select
                 {...field}
                 {...props}
+                // onChange={onChangeFunc}
                 className={meta.touched && meta.error ? 'field-error' : ''}
             />
             {meta.touched && meta.error ? (

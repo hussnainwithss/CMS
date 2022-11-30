@@ -2171,3 +2171,10 @@
 a.navbar-brand {
     margin-left: 0px !important;
 }
+
+
+hr:not([size]) {
+    height: 1.5px;
+    opacity: 1;
+    border: 0;
+}

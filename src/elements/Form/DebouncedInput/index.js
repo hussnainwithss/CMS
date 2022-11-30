@@ -7,6 +7,7 @@ const DebouncedInput = ({
     value: initialValue,
     onChange,
     debounce = 500,
+    isPaginated,
     ...props
 }) => {
     const [value, setValue] = useState(initialValue);
@@ -33,7 +34,11 @@ const DebouncedInput = ({
                     {...props}
                     onChange={(e) => setValue(e.target.value)}
                 />
-                <i className="fa fa-search fa-w-16 search-box-icon" />
+                <i
+                    className={`fa fa-search fa-w-16 search-box-icon ${
+                        isPaginated && 'top-35'
+                    }`}
+                />
             </div>
         </>
     );

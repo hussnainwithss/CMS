@@ -10,9 +10,9 @@ const TitleCard = ({
     description,
     buttonId,
     buttonTitle,
-    buttonOnClick = () => {
-        console.log('clicked');
-    },
+    buttonOnClick,
+    isButton,
+    children,
 }) => {
     return (
         <Card className="mb-3">
@@ -20,16 +20,17 @@ const TitleCard = ({
             <Card.ImgOverlay>
                 <Card.Body>
                     <h3>{title}</h3>
-                    <p>{description}</p>
-                    <Button
-                        variant="link"
+                    {description && <p>{description}</p>}
+                    {children && children}
+                    {buttonTitle && <Button
+                        variant={isButton ? 'primary' : 'link'}
                         id={buttonId}
                         onClick={(e) => buttonOnClick(e)}
-                        className="p-0"
-                        as="a"
+                        // as="a"
+                        className='ps-0'
                     >
-                        {buttonTitle}
-                    </Button>
+                    {buttonTitle}
+                    </Button>}
                 </Card.Body>
             </Card.ImgOverlay>
         </Card>

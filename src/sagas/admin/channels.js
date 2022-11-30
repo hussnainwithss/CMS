@@ -18,10 +18,11 @@ export function* getChannels({ payload: { setIsLoading } }) {
             setIsLoading(false);
         }
     } catch (error) {
-        yield put(actions.getChannelsFailed(error.data.enMessage));
+        if (error.data)
+            yield put(actions.getChannelsFailed(error.data.enMessage));
+        else yield put(actions.getChannelsFailed(error));
     }
 }
-
 export function* addChannel({
     payload: { values, setSubmitting, afterSubmit, setStatus },
 }) {
@@ -31,11 +32,13 @@ export function* addChannel({
         const resp = yield call(addChannelApi, token, data);
         if (resp) {
             yield put(actions.addChannelSuccess(resp.data.data));
-            afterSubmit();
+            afterSubmit(resp.data.data.id);
         }
     } catch (error) {
         setStatus({ type: 'danger', message: error.data.enMessage });
-        yield put(actions.addChannelFailed(error.data.enMessage));
+        if (error.data)
+            yield put(actions.addChannelFailed(error.data.enMessage));
+        else yield put(actions.addChannelFailed(error));
     }
     setSubmitting(false);
 }
@@ -53,7 +56,9 @@ export function* editChannel({
         }
     } catch (error) {
         setStatus({ type: 'danger', message: error.data.enMessage });
-        yield put(actions.editChannelFailed(error.data.enMessage));
+        if (error.data)
+            yield put(actions.editChannelFailed(error.data.enMessage));
+        else yield put(actions.editChannelFailed(error));
     }
     setSubmitting(false);
 }
@@ -68,6 +73,8 @@ export function* deleteChannel({ payload: { channel, setShowDeletePopUp } }) {
             setShowDeletePopUp(false);
         }
     } catch (error) {
-        yield put(actions.DeleteChannelFailed(error.message));
+        if (error.data)
+            yield put(actions.DeleteChannelFailed(error.data.enMessage));
+        else yield put(actions.DeleteChannelFailed(error));
     }
 }

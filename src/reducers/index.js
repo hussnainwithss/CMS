@@ -3,6 +3,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { auth } from './auth';
 import { admin } from './admin';
+import { sectors } from './sectors';
+import { entities } from './entities';
 
 const authPersistConfig = {
     key: 'auth',
@@ -11,18 +13,27 @@ const authPersistConfig = {
     transforms: [],
 };
 
-const adminPersistConfig = {
-    key: 'admin',
+const sectorsPersistConfig = {
+    key: 'sectors',
     storage,
     blacklist: [],
     transforms: [],
 };
 
-const persistedReducer = (persistConfig, reducer) =>
+const entitiesPersistConfig = {
+    key: 'entities',
+    storage,
+    blacklist: [],
+    transforms: [],
+};
+
+export const persistedReducer = (persistConfig, reducer) =>
     persistReducer(persistConfig, reducer);
 
 export const rootReducer = () =>
     combineReducers({
+        admin,
         auth: persistedReducer(authPersistConfig, auth),
-        admin: persistedReducer(adminPersistConfig, admin),
+        sectors: persistReducer(sectorsPersistConfig, sectors),
+        entities: persistReducer(entitiesPersistConfig,  entities),
     });
