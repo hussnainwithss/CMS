@@ -76,7 +76,7 @@ const DataCards = ({
                 <Row xs={1} md={3} className="g-8">
                     {table.getRowModel().rows.length > 0 &&
                         table.getRowModel().rows.map((row) => (
-                            <Col className={`mb-3`}>
+                            <Col className={`mb-3`} key={row.id}>
                                 <Card
                                     key={row.id}
                                     className={`h-100 ${styles['card-link']}`}
@@ -93,7 +93,7 @@ const DataCards = ({
                                         <Card.Img
                                             variant="top"
                                             src={
-                                                row.original.imageURL ||
+                                                row.original.logo ||
                                                 placeHolderImg
                                             }
                                             alt={row.original.englishName}
@@ -102,7 +102,7 @@ const DataCards = ({
                                     </div>
                                     <Card.Body className="bg-light pt-2 pb-auto">
                                         {fieldsToShow.map((f) => (
-                                            <>
+                                            <div key={fieldsLabels[f]}>
                                                 <span>
                                                     <b>{fieldsLabels[f]}</b>
                                                     {': '}
@@ -110,7 +110,7 @@ const DataCards = ({
                                                 </span>
 
                                                 <br />
-                                            </>
+                                            </div>
                                         ))}
                                     </Card.Body>
                                 </Card>

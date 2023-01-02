@@ -17,7 +17,7 @@ export const getColumns = (onEdit, onDelete) => {
             enableGlobalFilter: true,
             globalFilterFn: 'includesString',
         }),
-        // columnHelper.accessor('imageURL', {
+        // columnHelper.accessor('Logo', {
         //     header: () => <span>Logo</span>,
         //     cell: (info) => USERROLES[info.getValue()],
         //     enableGlobalFilter: true,

@@ -17,6 +17,8 @@ const LoginFormMarkup = (props) => {
                         name="email"
                         type="email"
                         placeholder="Enter E-mail Address"
+                        // validateAutoComplete
+                        // autoComplete='off'
                     />
                 </Row>
                 <Row>
@@ -24,6 +26,8 @@ const LoginFormMarkup = (props) => {
                         name="password"
                         type="password"
                         placeholder="Enter Password"
+                        // validateAutoComplete
+                        // autoComplete='off'
                     />
                 </Row>
                 <div>
@@ -32,6 +36,7 @@ const LoginFormMarkup = (props) => {
                         variant="primary"
                         className="w-100 d-block mt-3"
                         disabled={!isValid || isSubmitting}
+
                     >
                         {isSubmitting ? 'Attempting Login...' : 'Login'}
                     </FilledButton>

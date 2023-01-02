@@ -46,6 +46,9 @@ const SectorForm = lazy(() =>
 );
 
 const Entities = lazy(() => import('../pages/cms/Entities/Entities'));
+const EntityForm = lazy(() =>
+    import('../pages/cms/Entities/EntityForm/EntityForm'),
+);
 
 const Router = () => {
     const { isAuthenticated, tokenExpireTimeStamp, logout } = useAuth();
@@ -67,6 +70,8 @@ const Router = () => {
                 <Route path={ROUTES.LOGOUT} element={<Logout />} />
                 <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
                 <Route path={ROUTES.ENTITIES} element={<Entities />} />
+                <Route path={ROUTES.ADDENTITY} element={<EntityForm />} />
+                <Route path={ROUTES.EDITENTITY} element={<EntityForm />} />
                 <Route path={ROUTES.SERVICES} element={<Services />} />
                 <Route
                     path={ROUTES.ADDSERVICE}

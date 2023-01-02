@@ -10,7 +10,8 @@ export const FormikEnhancer = withFormik({
             .matches(
                 '^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?(adaa.gov.sa)$',
                 'Only Adaa registered emails allowed',
-            ),
+            )
+            ,
         password: string().required(),
     }),
 
@@ -18,4 +19,5 @@ export const FormikEnhancer = withFormik({
         login({ values, setSubmitting });
     },
     displayName: 'LoginForm',
+    validateOnMount: true,
 });

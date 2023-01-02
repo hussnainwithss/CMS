@@ -65,7 +65,7 @@ export function* editEntity({
     setSubmitting(false);
 }
 
-export function* deleteEntity({ payload, payload: { entity, setShowDeletePopUp, navigate } }) {
+export function* deleteEntity({ payload, payload: { entity, hideDeletePopUp, navigate } }) {
     const token = yield select(selectAccessTokenFromState);
     const data = { ...entity };
     try {
@@ -73,10 +73,10 @@ export function* deleteEntity({ payload, payload: { entity, setShowDeletePopUp, 
         if (resp) {
             yield put(actions.DeleteEntitySuccess(resp.data.data));
             navigate(ROUTES.ENTITIES);
-            setShowDeletePopUp(false);
+            hideDeletePopUp();
         }
     } catch (error) {
-        setShowDeletePopUp(false);
+        hideDeletePopUp();
         if (error.data)
             yield put(actions.DeleteEntityFailed(error.data.enMessage));
         else yield put(actions.DeleteEntityFailed(error));

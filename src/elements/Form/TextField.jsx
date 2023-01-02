@@ -9,7 +9,7 @@ const TextField = ({ label, errorClassName, bottomText, ...props }) => {
             controlId={props.id || props.name}
             className={props.className}
         >
-            {label ? <Form.Label>{label}</Form.Label> : ''}
+            {label && <Form.Label>{label}</Form.Label>}
             <Form.Control
                 {...field}
                 {...props}

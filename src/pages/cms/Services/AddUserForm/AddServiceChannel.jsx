@@ -211,7 +211,6 @@ const AddServiceChannel = ({
         updateChannelCategory,
     } = useChannel();
     const handleSubmit = (values, { setSubmitting, resetForm, setStatus }) => {
-        console.log(values);
         afterSubmit();
     };
 
@@ -242,7 +241,6 @@ const AddServiceChannel = ({
                     >
                         {(props) => (
                             <Form>
-                                {console.log(props.values.channelCategory)}
                                 {props.status && (
                                     <Alert
                                         key={props.status.type}
@@ -338,7 +336,6 @@ const AddServiceChannel = ({
                                         label="Channel Type"
                                         // value={props.values.channelType}
                                         onChange={(e) => {
-                                            // console.log(e.target.value);
                                             props.setFieldValue(
                                                 'channelType',
                                                 [...e.target.options]
@@ -383,9 +380,10 @@ const AddServiceChannel = ({
                                     />
                                 </div>
                                 <Modal.Footer>
-                                      variant="primary"
+                                      
                                         <FilledButton
                                       type="submit"
+                                      variant="primary" 
                                     >
                                         {'Save'}
                                     </FilledButton>

@@ -6,7 +6,7 @@ export const BASE_URL =
 export const ENDPOINTS = {
     LOGIN: `${BASE_URL}/users/login`,
     USERS: `${BASE_URL}/users`,
-    CHANNELS: `${BASE_URL}/channelscategories`,
+    CHANNELCATEGORIES: `${BASE_URL}/channelscategories`,
     CITIES: `${BASE_URL}/cities`,
     REGIONS: `${BASE_URL}/regions`,
     LANGUAGES: `${BASE_URL}/languages`,
@@ -16,6 +16,7 @@ export const ENDPOINTS = {
     CHANNELTYPES: `${BASE_URL}/channelType`,
     SECTORS: `${BASE_URL}/sectors`,
     ENTITIES: `${BASE_URL}/entities`,
+    CHANNELS: `${BASE_URL}/channels`,
 };
 
 export const REQUEST_TYPES = {

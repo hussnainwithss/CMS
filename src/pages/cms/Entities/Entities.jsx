@@ -9,7 +9,7 @@ import { Loader } from '../../../components/Loader';
 import { DashboardLayout } from '../../../layouts';
 import DataCards from '../../../components/DataCards/DataCards';
 import { ROUTES } from '../../../routes/constants';
-import { ACTION_TYPE } from './SectorForm/constants';
+import { ACTION_TYPE } from './EntityForm/constants';
 import { selectEntitiesFromState } from '../../../selectors/entities';
 import { getColumns } from './TableData';
 const UserManagement = () => {
@@ -23,7 +23,7 @@ const UserManagement = () => {
 
     const clickHandler = (event) => {
         if (event.target.id === 'add') {
-            navigate(ROUTES.ADDSECTOR);
+            navigate(ROUTES.ADDENTITY);
         }
     };
 

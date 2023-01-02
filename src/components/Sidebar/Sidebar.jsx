@@ -102,7 +102,7 @@ const Sidebar = () => {
                             <Nav.Item as="li">
                             <Link
                                     className={`nav-link  ${
-                                        ROUTES.ENTITIES === route ? 'active' : ''
+                                        route.includes(ROUTES.ENTITIES) ? 'active' : ''
                                     }`}
                                     to={ROUTES.ENTITIES}
                                 >

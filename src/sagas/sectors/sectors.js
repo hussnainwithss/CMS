@@ -16,7 +16,7 @@ export function* getSectors({ payload: { setIsLoading } }) {
         const resp = yield call(getSectorsApi, token);
         if (resp) {
             yield put(actions.getSectorsSuccess(resp.data.data));
-            setIsLoading(false);
+            setIsLoading && setIsLoading(false);
         }
     } catch (error) {
         if (error.data)
@@ -65,7 +65,7 @@ export function* editSector({
     setSubmitting(false);
 }
 
-export function* deleteSector({ payload, payload: { sector, setShowDeletePopUp, navigate } }) {
+export function* deleteSector({ payload, payload: { sector, hideDeletePopUp, navigate } }) {
     const token = yield select(selectAccessTokenFromState);
     const data = { ...sector };
     try {
@@ -73,10 +73,10 @@ export function* deleteSector({ payload, payload: { sector, setShowDeletePopUp, 
         if (resp) {
             yield put(actions.DeleteSectorSuccess(resp.data.data));
             navigate(ROUTES.SECTORS);
-            setShowDeletePopUp(false);
+            hideDeletePopUp && hideDeletePopUp(false);
         }
     } catch (error) {
-        setShowDeletePopUp(false);
+        hideDeletePopUp && hideDeletePopUp(false);
         if (error.data)
             yield put(actions.DeleteSectorFailed(error.data.enMessage));
         else yield put(actions.DeleteSectorFailed(error));

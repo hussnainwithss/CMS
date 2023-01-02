@@ -38,7 +38,6 @@ const SectorForm = () => {
 
     const getSector = () => {
         const sectorId = parseInt(pathname.split('/').at('-1'));
-        console.log({ sectorId });
         return selectSectorFromState(sectorsData, sectorId)[0];
     };
 
@@ -101,7 +100,7 @@ const SectorForm = () => {
                                     <hr className={commonStyles['line-grey']} />
                                     <div className="mb-3">
                                         <TextField
-                                            name="imageURL"
+                                            name="Logo"
                                             type="text"
                                             label="Image URL"
                                         />

@@ -15,7 +15,7 @@ export function* getEntityTypes({ payload: { setIsLoading } }) {
         const resp = yield call(getEntityTypesApi, token);
         if (resp) {
             yield put(actions.getEntityTypesSuccess(resp.data.data));
-            setIsLoading(false);
+            setIsLoading && setIsLoading(false);
         }
     } catch (error) {
         if (error.data)

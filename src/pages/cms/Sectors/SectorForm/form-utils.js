@@ -6,19 +6,20 @@ export const getInitialProps = (sector) =>
         ? {
               englishName: sector.englishName,
               arabicName: sector.arabicName,
-              imageURL: sector.imageURL,
+              Logo: sector.Logo,
               isActive: sector.isActive,
+              isDeleted: sector.isDeleted,
               id: sector.id,
           }
         : {
               englishName: '',
               arabicName: '',
-              imageURL: '',
+              Logo: '',
               isActive: true,
           };
 
 export const validationSchema = object({
     arabicName: string().required(),
     englishName: string().required(),
-    imageURL: string().url().required('Please enter correct URL'),
+    Logo: string().url().required('Please enter correct URL'),
 });
